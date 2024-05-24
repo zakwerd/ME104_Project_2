@@ -6,6 +6,16 @@ import math
 This code is meant to help with gear calculations for project 2.
 
 """
+# Files
+FILENAME = "mass.txt"
+GEAR_RATIO = 10
+
+# Initialize Gears
+r_1 = 1
+r_2 = 1
+r_3 = 1
+r_drum = GEAR_RATIO
+
 
 # Global Vars
 FORCE = 22.5
@@ -22,6 +32,9 @@ HS_Density = 0.289  # lbs/inch cubed
 # Material Values for 303 Stainless Steel
 SS_Se = 50000
 SS_Density = 0.289
+
+def drum_radius(r_2):
+    return GEAR_RATIO / r_2
 
 def radius(N, P):
     r = N / (2 * P)
@@ -66,7 +79,7 @@ def find_min_masses():
 
     # Write the results to masses.txt
     count = 0
-    with open('masses.txt', 'w') as file:
+    with open(FILENAME, 'w') as file:
         for mass, N, P in results:
             count += 1
             file.write(f"{count}. Mass: {mass}, Teeth: {N}, Pitch: {P}, Material: Hardened Steel\n")
